@@ -1,0 +1,139 @@
+.lecture{
+    width:100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    height:100vh;
+    background-color: rgb(235, 235, 235);
+    padding-top: 62px;
+}
+
+.video{
+    width: 100%;
+    height: 500px;
+    background-color: #1C1D1F;
+}
+
+.sidebar{
+    width:100%;
+    height:calc(100vh - 62px);
+    background-color: rgb(255, 255, 255);
+    border-left: 1px solid rgb(206, 206, 206);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-top{
+    width:100%;
+    padding:1rem;
+    background-color: rgb(244, 244, 244);
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    font-weight: 600;
+}
+
+.sidebar-body{
+    overflow-y:scroll;
+    flex-grow: 1;
+    background-color: rgb(252, 252, 252);
+   
+
+}
+
+.course-lecture{
+    padding: .4rem .8rem ;
+    border-bottom: 1px solid rgb(227, 227, 227);
+    cursor: pointer;
+    display: flex;
+    font-weight: 300;
+    background-color: #fff;
+}
+
+.course-lecture.current{
+  background-color: #D1D7DC;
+}
+.course-lecture.current:hover{
+    background-color: #D1D7DC;
+  }
+
+.lecture-play-icon{
+    color:#6a6f73;
+    margin-right: 6px;
+}
+
+.course-lecture.current .lecture-play-icon{
+    color:#1C1D1F
+}
+
+.course-lecture.current  span{
+    color:#1C1D1F;
+    font-weight: 500;
+}
+
+
+.course-lecture input {
+    margin: 6px 10px 0 0;
+}
+
+.course-lecture > div > div {
+    display: flex;
+    align-items: center;
+    margin-top: .4rem;
+}
+
+
+
+.course-lecture > div > div span{
+    font-size: 12px;
+    color: rgb(155, 155, 155);
+}
+
+.course-lecture:hover{
+    background-color: rgb(250, 250, 250);
+}
+
+.lecture-nav{
+    display: flex;
+    justify-content: space-between;
+    padding:15px 20px;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: #1C1D1F;
+    z-index: 100;
+    border-bottom: 1px solid #3e4143
+
+}
+
+.lecture-nav div{
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.lecture-nav div > span:last-child {
+    margin-left: 1rem;
+    border-left: 1px solid rgb(68, 68, 68);
+    padding-left: 1rem;
+   
+}
+
+.progress{
+    background-color: rgb(220, 17, 112);
+    color:#fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+@media (max-width: 1110px){
+    .lecture{
+        grid-template-columns: 1fr;
+    }
+   
+    .video{
+     height:400px
+    }
+    
+}

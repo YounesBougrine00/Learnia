@@ -1,0 +1,23 @@
+export const SET_ALERT = "SET_ALERT"
+export const REMOVE_ALERT = "REMOVE_ALERT"
+export const GET_INSTRUCTORS = "GET_INSTRUCTORS"
+export const ADD_INSTRUCTOR = "ADD_INSTRUCTOR"
+export const GET_COURSES = "GET_COURSES"
+export const GET_COURSE = "GET_COURSE"
+export const COURSE_ADDED_SUCCESSFULLY = "COURSE_ADDED_SUCCESFULLY"
+export const GET_LECTURES= "GET_LECTURES"
+export const ADD_LECTURE = "ADD_LECTURE"
+export const DELETE_LECTURES = "DELETE_LECTURES"
+
+
+
+
+
+
+
+
+
+
+
+
+

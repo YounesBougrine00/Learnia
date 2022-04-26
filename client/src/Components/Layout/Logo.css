@@ -1,0 +1,19 @@
+.logo{
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.logo span{
+    margin-right: 5px;
+}
+
+.logo div {
+    border-radius: 50%;
+    width:20px;
+    height: 20px;
+    background: rgb(230,0,122);
+    background: linear-gradient(90deg, rgba(230,0,122,1) 0%, rgba(230,0,122,1) 57%, rgba(190,11,60,1) 100%, rgba(0,0,0,1) 100%);
+}

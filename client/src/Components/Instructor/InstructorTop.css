@@ -1,0 +1,61 @@
+.instructor-banner{
+    background-color: var(--dark-color);
+    padding: 100px 0px 50px 0px;
+    width:100%;
+    min-height:400px;
+    color:#fff;
+    margin-bottom: 1rem;
+}
+
+.instructor-banner .container{
+    display: grid;
+    grid-template-columns: .75fr 3.25fr;
+    gap:1rem;
+    justify-items: center;
+
+}
+
+.instructor-banner .container .img-wrapper{
+    justify-self: start;
+}
+
+.instructor-banner .container > div p:first-child{
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color:  #fff;
+}
+
+.instructor-banner .container > div p:last-child{
+    font-weight: 300;
+    text-align: justify;
+}
+
+.instructor-banner .container .img-wrapper {
+     width:200px;
+     height: 200px;
+    
+}
+
+.instructor-banner .container img{
+    width:100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; 
+    border: .3rem solid #fff
+}
+
+@media (max-width: 900px){
+    .instructor-banner .container{
+        grid-template-columns: 1fr;
+    }
+    .instructor-banner .container p:first-child{
+        text-align: center;
+    }
+
+    .instructor-banner .container .img-wrapper{
+        width:150px;
+        height: 150px;
+        justify-self: center;
+    }
+}

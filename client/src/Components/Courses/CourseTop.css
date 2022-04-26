@@ -1,0 +1,134 @@
+.course-banner{
+    padding-top: 100px;
+    background-color:#00262B;
+    color:#fff;
+    position: relative;
+    padding-bottom: 2.3rem;
+    min-height: 400px;
+    background: rgb(0,38,43);
+    background: linear-gradient(90deg, rgba(0,38,43,1) 0%, rgba(0,38,43,1) 48%, rgba(9,8,8,1) 100%, rgba(190,11,60,1) 100%);
+
+    
+}
+
+.course-banner .container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.course-info{
+    flex:2;
+
+    max-width: 550px;
+}
+
+.course-banner-thumbnail{
+    height:100%;
+    width:30%;
+    position: absolute;
+    right:0;
+    bottom:0;
+}
+
+.course-banner-thumbnail img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.course-banner .title {
+    font-size:  1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.course-banner .description{
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+
+}
+
+.course-banner .participants{
+    margin-bottom: 1rem;
+    color: rgb(226, 226, 226);
+    font-size: .8em;
+
+}
+
+.course-banner .creator{
+    margin-bottom: 1rem;
+    font-size: .8rem;
+    color:#fff
+}
+
+.creator i {
+    margin-right: .4rem;
+}
+
+.course-banner .creator span{
+    text-decoration: underline;
+    color: #03C7E8;
+    cursor: pointer;
+}
+
+.container .price{
+    padding:8px 0;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1C1D1F;
+    margin-bottom: 2rem;
+  
+}
+
+.container .price p {
+    margin-left: 2rem;
+}
+
+.price-wrapper{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+@media (max-width: 900px) {
+    .course-banner .container{
+        flex-direction: column-reverse;
+    }
+    .course-banner-thumbnail{
+        position: relative;
+        width:100%;
+        height: 100%;
+        margin-bottom: 2rem;
+    }
+    .course-banner{
+        background: rgb(0,38,43);
+        background: linear-gradient(180deg, rgba(0,38,43,1) 0%, rgba(0,38,43,1) 48%, rgba(9,8,8,1) 100%, rgba(190,11,60,1) 100%);
+    }
+    .container .price{
+        justify-content: space-between;
+        position: fixed;
+        margin-bottom:0;
+        bottom:0;
+        right:0;
+        width:100%;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        z-index: 99;
+        height:70px;
+        color:#fff;
+        background-color:#011315;
+        padding:.8rem 1rem;
+        border-top: 1px solid #021f23
+    }
+
+    .container .price button{
+        margin:0;
+        padding:0;
+        height:100%;
+    }
+
+    }
+   
+   
+  
