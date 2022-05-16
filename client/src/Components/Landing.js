@@ -1,18 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../App.css'
 import Searchbar from './Layout/Searchbar'
 import CourseItem from './Courses/CourseItem'
-
-import Angular from '../images/Angular.jpg'
-import Firebase from '../images/Firebase.jpg'
-import datascience from '../images/datascience.jpg'
 import woman from '../images/woman.png'
+import {useSelector, useDispatch} from 'react-redux'
+import { getLandingCourses } from '../Redux/actions/course'
+
 
 
 
 
 
 const Landing = () => {
+
+  const dispatch = useDispatch()
+  const  {landing_courses,landing_courses_loading}  = useSelector(state => state.course)
+
+  useEffect(()=>{
+    dispatch(getLandingCourses())
+  },[dispatch])
+
   return (
     <>
     <div className="banner">
@@ -48,14 +55,8 @@ const Landing = () => {
     <div className="container" style={{"marginBottom":"2rem"}}>
       <p className='text-title'>Explore courses</p>
       <div className="courses">
-        <CourseItem image={Angular}/>
-        <CourseItem image={Firebase}/>
-        <CourseItem image={datascience}/>
-        <CourseItem image={Angular}/>
-        <CourseItem image={Angular}/>
-        <CourseItem image={Angular}/>
-        <CourseItem image={Angular}/>
-        <CourseItem image={Angular}/>
+        {(!landing_courses_loading && landing_courses) && landing_courses.map(course=> <CourseItem key={course._id} course={course}/> )}
+
       </div>
     </div>
     

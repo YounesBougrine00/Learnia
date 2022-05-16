@@ -1,18 +1,28 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Logo from './Logo'
 import Searchbar from './Searchbar'
 import '../../App.css'
 import { Link } from 'react-router-dom'
+import {useSelector,useDispatch} from 'react-redux'
+import { logout } from '../../Redux/actions/auth'
+import { useNavigate } from 'react-router'
+
 
 const Navbar = () => {
 
-  const [isAuthenticated,setIsAuthenticated] = useState(false)
+  
+   const {user, user_loading}= useSelector(state=> state.auth)
+   const dispatch = useDispatch()
+   const navigate = useNavigate()
+
+/*----------------*/
+ 
   const [showMobileSearch, setShowMobileSearch] = useState(false)
 
   const authLinks = (
   <>
-    <button className="btn ">My Courses</button>
-    <button className="btn ">Logout</button>
+   <button onClick={()=> navigate('/my-courses')} className="btn ">My Courses</button>
+    <button onClick={()=>{ dispatch(logout()); navigate('/')}} className="btn  btn-primary">Logout</button>
   </>
   )
 
@@ -29,11 +39,13 @@ const Navbar = () => {
    
       <nav>
       <Logo/>
+
       <Searchbar/>
       
       <div className='links-wrapper' >
         <i className="fas fa-search mobile" onClick={()=>setShowMobileSearch(true)}></i>
-        {isAuthenticated ? authLinks : guestLinks }
+        {user ? authLinks: guestLinks }
+
  
       </div>
     {showMobileSearch &&<div className="mobile-search">

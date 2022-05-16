@@ -1,22 +1,38 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import '../../App.css'
 import './InstructorTop.css'
-import Angular from '../../images/Angular.jpg'
+import axios  from 'axios'
+import {  useParams } from "react-router";
 
 const InstructorTop = () => {
+  
+  const {instructorId} = useParams()
+
+  const [instructor,setInstructor] = useState('')
+
+  useEffect(()=>{
+    async function getResults() {
+      if(instructorId){
+
+     const res = await axios.get(`/api/instructors/${instructorId}`)
+
+     setInstructor(res.data)
+   }
+   }
+
+   getResults()
+  
+  },[instructorId])
+
   return (
     <div className="instructor-banner">
         <div className="container">
             <div className="img-wrapper">
-                <img src={Angular} alt="" />
+                <img src={instructor.image} alt="" />
             </div>
             <div>
-                <p>Instructor name</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                    Aspernatur dolorum debitis alias qui odio velit quos! Nostrum quo odit impedit! 
-                    Optio excepturi molestias cupiditate recusandae numquam consectetur voluptatem velit quia?
-                     Illo eum velit dicta. Aliquid asperiores quae in explicabo velit, quia voluptatibus recusandae 
-                     ullam hic aut expedita quas dolor! Deleniti.</p>
+                <p>{instructor.name}</p>
+                <p>{instructor.about}</p>
 
             </div>
         </div>

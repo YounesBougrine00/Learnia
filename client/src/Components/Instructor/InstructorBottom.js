@@ -12,14 +12,7 @@ const InstructorBottom = () => {
     <div className="container" style={{"marginBottom":"2rem"}}>
       <div className="p-title">Courses made by Instructor name</div>
       <div className="courses">
-        <CourseItem image={Angular}/>
-        <CourseItem image={Firebase}/>
-        <CourseItem image={datascience}/>
-        <CourseItem image={Angular}/>
-        <CourseItem image={Angular}/>
-        <CourseItem image={Angular}/>
-        <CourseItem image={Angular}/>
-        <CourseItem image={Angular}/>
+         
       </div>
     </div>
   )

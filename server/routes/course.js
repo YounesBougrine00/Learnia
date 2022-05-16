@@ -15,6 +15,19 @@ router.get('/',async (req,res)=>{
   
   })
   
+
+// get landing page  courses
+router.get('/landing',async (req,res)=>{
+    try {
+        const courses = await Course.find().limit(8)
+        res.send(courses)
+    } catch (error) {
+        console.log(error.message)
+    }
+  
+  })
+
+
   //post a course
   router.post('/',async (req,res)=>{
       const {title,subtitle,instructor,category,language,description,whatYouWillLearn,prerequisites,level} = req.body

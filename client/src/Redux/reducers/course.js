@@ -1,11 +1,13 @@
-import { COURSE_ADDED_SUCCESSFULLY, GET_COURSE,GET_COURSES } from "../types"
+import { CLEAR_COURSE, COURSE_ADDED_SUCCESSFULLY, GET_COURSE,GET_COURSES, GET_LANDING_COURSES } from "../types"
 
 const initalState = {
   courses:[],
   course:null,
   courses_loading: true,
+  landing_courses:[],
   course_loading:true,
-  course_added_successfully: false
+  course_added_successfully: false,
+  landing_courses_loading: true
 }
 
 export default function (state = initalState, action){
@@ -19,6 +21,12 @@ export default function (state = initalState, action){
                 courses: payload,
                 courses_loading: false
             }
+        case GET_LANDING_COURSES:
+            return {
+                    ...state,
+                    landing_courses: payload,
+                    landing_courses_loading: false
+            }
         case GET_COURSE:
             return {
                 ...state,
@@ -29,6 +37,12 @@ export default function (state = initalState, action){
             return{
                 ...state,
                 course_added_successfully: payload
+            }
+        case CLEAR_COURSE:
+            return {
+                ...state,
+                course: null,
+                course_loading:true
             }
 
         default:

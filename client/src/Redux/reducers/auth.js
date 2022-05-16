@@ -1,9 +1,8 @@
-import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, ACCOUNT_DELETED,UPDATE_AVATAR} from "../types"
+import {  LOAD_USER, LOGOUT, USER_LOADED} from "../types"
 
 const initialState = {
     token : localStorage.getItem('token'),
-    isAuthenticated: null,
-    loading: true,
+    user_loading: true,
     user: null
 }
 
@@ -12,31 +11,48 @@ export default function(state = initialState, action){
 
     switch(type){
         case USER_LOADED:
-            return {
-              ...state,
-              isAuthenticated: true,
-              loading: false,
-              user: payload
-            }
-        case REGISTER_SUCCESS:
-        case LOGIN_SUCCESS:
-            localStorage.setItem('token', payload.token)
+            localStorage.setItem('token', payload)
+            const encodedPayload = payload.split('.')[1];
+            const user = JSON.parse(atob(encodedPayload));
+       
             return {
                 ...state,
-                ... payload,
-                isAuthenticated:true,
-                loading:false
+                user: user,
+                token: payload,
+                user_loading:false,
+
             }
-        case REGISTER_FAIL:
-        case AUTH_ERROR:
-        case LOGIN_FAIL:
         case LOGOUT:
+            
+            localStorage.removeItem('token')
             return {
                 ...state,
+                user:null,
                 token: null,
-                isAuthenticated:false,
-                loading:false
+                user_loading:false
             }
+        case LOAD_USER:
+            const token = localStorage.getItem('token') || null
+
+            if(token){
+            const encodeddPayload = token.split('.')[1];
+            const encodedUser = JSON.parse(atob(encodeddPayload));  
+              return {
+                ...state,
+                user: encodedUser,
+                token: token,
+                user_loading:false,
+            }
+            }else {
+                return {
+                    ...state,
+                    user:null,
+                    token: null,
+                    user_loading:false
+                }
+            }
+
+          
 
         
 

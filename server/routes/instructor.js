@@ -14,6 +14,19 @@ router.get('/',async (req,res)=>{
 
 })
 
+// get  instructor by id
+router.get('/:id',async (req,res)=>{
+    const {id} = req.params
+    try {
+        const instructor = await Instructor.findById(id)
+        res.send(instructor)
+    } catch (error) {
+        console.log(error.message)
+    }
+  
+  })
+
+
 //post an instructor
 router.post('/',async (req,res)=>{
     const {name,about} = req.body

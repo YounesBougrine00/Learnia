@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_COURSE, GET_COURSES } from '../types'
+import { CLEAR_COURSE, GET_COURSE, GET_COURSES, GET_LANDING_COURSES } from '../types'
 import { COURSE_ADDED_SUCCESSFULLY } from '../types'
 
 
@@ -23,6 +23,8 @@ export const addCourse = (course)=> async dispatch  => {
 //Get courses
 
 export const getCourses = () => async dispatch => {
+
+
     try {
 
         const res = await axios.get('/api/courses')
@@ -35,9 +37,28 @@ export const getCourses = () => async dispatch => {
     }
 }
 
+//Get landing page courses
+
+export const getLandingCourses = () => async dispatch => {
+    try {
+
+        const res = await axios.get('/api/courses/landing')
+        dispatch({
+            type: GET_LANDING_COURSES,
+            payload: res.data
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 
 // Get course by Id
 export const getCourse = (courseId) => async dispatch => {
+    dispatch({
+        type: CLEAR_COURSE
+    })
     try {
         const res = await axios.get(`/api/courses/${courseId}`)
         dispatch({

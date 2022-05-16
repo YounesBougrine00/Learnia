@@ -34,11 +34,13 @@ const CourseBottom = ({course,loading}) => {
       <div className={expand? `description expand`: 'description'} >
         <p className='p-title'>Description</p>
         <p className='description-text'>{(!loading && course) && course.description }</p>
-         <span class={expand? `readmore-link expand`: 'readmore-link'} onClick={()=>setExpand(!expand)}></span>   
+         <span className={expand? `readmore-link expand`: 'readmore-link'} onClick={()=>setExpand(!expand)}></span>   
       </div>
-      <div className="course-content">
+     {/*
+       <div className="course-content">
         <p className="p-title">Course content</p>
       </div>
+          */} 
     </div>
   )
 }

@@ -223,8 +223,32 @@ nav{
 
 .course-item {
   cursor: pointer;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+  border-bottom: 1px solid #d1d7dc;
+  display: flex;
+  flex-direction: column;
 }
+
+.course-item a {
+  flex-grow: 1;
+}
+
+.course-item .course-card-info{
+  background-color: #fff;
+  padding: .8rem;
+  padding-top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.course-item .course-card-info span {
+  align-self: start;
+}
+
+
 
 .course-item-thumbnail{
   height:50%;
@@ -285,6 +309,15 @@ nav{
   color:#721c24;
   margin-bottom: 1rem;
   text-align: center;border: 1px solid #f5c6cb
+}
+
+.info-box{
+  width:100%;
+  padding:1rem;
+  background-color: #d7f8eb;
+  color:#186c5d;
+  margin-bottom: 1rem;
+  text-align: center;border: 1px solid #c1eccf
 }
 
 /*Admin*/

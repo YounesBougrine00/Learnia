@@ -28,6 +28,7 @@
     position: absolute;
     right:0;
     bottom:0;
+    background: rgb(0, 0, 0);
 }
 
 .course-banner-thumbnail img{
