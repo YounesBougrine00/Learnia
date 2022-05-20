@@ -24,7 +24,7 @@ const Course = () => {
        if(course){
       const instructorId = course.instructor
 
-      const res = await axios.get(`/api/instructors/${instructorId}`)
+      const res = await axios.get(`http://localhost:5000/api/instructors/${instructorId}`)
 
       setInstructor(res.data)
     }

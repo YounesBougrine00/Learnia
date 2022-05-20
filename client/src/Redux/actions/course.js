@@ -12,7 +12,7 @@ export const addCourse = (course)=> async dispatch  => {
                 'Content-Type': 'application/json'
             }
         }
-        await axios.post('/api/courses',course,config)
+        await axios.post('http://localhost:5000/api/courses',course,config)
         dispatch(courseAddedState(true))
 
     } catch (error) {
@@ -27,7 +27,7 @@ export const getCourses = () => async dispatch => {
 
     try {
 
-        const res = await axios.get('/api/courses')
+        const res = await axios.get('http://localhost:5000/api/courses')
         dispatch({
             type: GET_COURSES,
             payload: res.data
@@ -42,7 +42,7 @@ export const getCourses = () => async dispatch => {
 export const getLandingCourses = () => async dispatch => {
     try {
 
-        const res = await axios.get('/api/courses/landing')
+        const res = await axios.get('http://localhost:5000/api/courses/landing')
         dispatch({
             type: GET_LANDING_COURSES,
             payload: res.data
@@ -60,7 +60,7 @@ export const getCourse = (courseId) => async dispatch => {
         type: CLEAR_COURSE
     })
     try {
-        const res = await axios.get(`/api/courses/${courseId}`)
+        const res = await axios.get(`http://localhost:5000/api/courses/${courseId}`)
         dispatch({
             type: GET_COURSE,
             payload:res.data

@@ -10,7 +10,7 @@ export const register = ({email,password,firstName,lastName})=> async dispatch  
                 'Content-Type': 'application/json'
             }
         }
-        const res = await  axios.post('/api/auth/signup',{email,password,firstName,lastName},config)
+        const res = await  axios.post('http://localhost:5001/api/auth/signup',{email,password,firstName,lastName},config)
         const {token} = res.data
    
         dispatch({
@@ -36,7 +36,7 @@ export const login = ({email,password})=> async dispatch  => {
             }
         }
    
-        const res= await  axios.post('/api/auth/login',{email,password}, config)
+        const res= await  axios.post('http://localhost:5001/api/auth/login',{email,password}, config)
 
         const {token} = res.data
 

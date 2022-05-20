@@ -3,3 +3,9 @@ client/node_modules
 
 #server
 server/node_modules
+
+#auth-srv
+auth-srv/node_modules
+
+#instructor-srv
+instructor-srv/node_modules

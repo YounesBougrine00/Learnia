@@ -5,7 +5,7 @@ import { GET_LECTURES, ADD_LECTURE, DELETE_LECTURES } from '../types'
 export const getLectures = (courseId) =>async dispatch => {
     try {
         
-        const res = await axios.get(`/api/lectures/${courseId}`)
+        const res = await axios.get(`http://localhost:5000/api/lectures/${courseId}`)
         dispatch ({
             type: GET_LECTURES,
             payload: res.data
