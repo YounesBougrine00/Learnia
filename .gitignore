@@ -9,3 +9,6 @@ auth-srv/node_modules
 
 #instructor-srv
 instructor-srv/node_modules
+
+#course-srv
+course-srv/node_modules
