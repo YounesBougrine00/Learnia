@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Course = require('../../models/Course')
 const {cloudinary} = require('../../utils/cloudinary')
-
+const {sendtoQueue}= require('../../queue/queue')
 
 // get all courses
 router.get('/',async (req,res)=>{
@@ -28,7 +28,7 @@ router.get('/landing',async (req,res)=>{
   })
 
 
-  //post a course
+  //Create a new course
   router.post('/',async (req,res)=>{
       const {title,subtitle,instructor,category,language,description,whatYouWillLearn,prerequisites,level} = req.body
       const fileStr = req.body.previewSource
@@ -42,6 +42,7 @@ router.get('/landing',async (req,res)=>{
               course.wylearn.push(item.text)
           })
           await course.save()
+          sendtoQueue("instructor:course.created",{courseId:course._id,title,instructor,thumbnail:image.url})
           res.send(course)
       } catch (error) {
           console.log(error.message)

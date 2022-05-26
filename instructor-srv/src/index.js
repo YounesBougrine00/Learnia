@@ -1,7 +1,10 @@
 const express = require('express')
 const json = require('body-parser')
 const router = express.Router()
+const Instructor = require('../models/Instructor')
 const connectToDb = require('../db/db')
+const {connectQueues} = require('../queue/queue')
+const {addCourse} = require('../queue/listener/methods')
 const cors = require('cors')
 require('dotenv').config()
 
@@ -11,6 +14,18 @@ app.use(cors())
 
 //Connecting to db
 connectToDb()
+
+
+//Connect and get data from queues
+connectQueues(["instructor:course.created"]).then(() => {
+  channel.consume("instructor:course.created", (data) => {
+      const {courseId,title,instructor,thumbnail}= JSON.parse(data.content);
+      
+     addCourse({courseId,title,instructor,thumbnail })
+      
+      channel.ack(data);
+  });
+});;
 
 app.use('/api/instructor', require('./routes/index'))
 
