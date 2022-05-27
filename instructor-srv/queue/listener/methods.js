@@ -1,4 +1,4 @@
-const Instructor = require('../models/Instructor')
+const Instructor = require('../../models/Instructor')
 
 async function addCourse({courseId,title,instructor,thumbnail }){
     const foundInstructor = await Instructor.findById(instructor.instructorId)
