@@ -3,6 +3,7 @@ const router = express.Router()
 const User= require('../../models/User')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const {sendtoQueue}= require('../../queue/queue')
 
 
 
@@ -28,6 +29,8 @@ router.post('/signup',async (req, res) => {
     });
    
     await result.save()
+
+    sendtoQueue("purchase:user.created",{userId: result.id})
    
     jwt.sign({
         id: result.id,

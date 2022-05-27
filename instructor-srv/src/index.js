@@ -1,7 +1,5 @@
 const express = require('express')
 const json = require('body-parser')
-const router = express.Router()
-const Instructor = require('../models/Instructor')
 const connectToDb = require('../db/db')
 const {connectQueues} = require('../queue/queue')
 const {addCourse} = require('../queue/listener/methods')

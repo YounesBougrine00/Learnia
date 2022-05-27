@@ -65,8 +65,21 @@ router.get('/:courseId',async (req,res)=>{
   
   })
   
+// Buy a course
+router.post('/buy/:courseId/:userId', async (req,res)=>{
+    const courseId = req.params.courseId
+    const userId = req.params.userId
+
+    const course = await Course.findById(courseId)
+
+    const title = course.title
+    const purchaseDate = new Date()
+    sendtoQueue("purchase:course.purchased",{userId, courseId, title, purchaseDate})
+    res.send({userId, courseId, title, purchaseDate})
+})
 
 
-  module.exports = router
+
+module.exports = router
 
 

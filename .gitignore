@@ -12,3 +12,10 @@ instructor-srv/node_modules
 
 #course-srv
 course-srv/node_modules
+
+#lecture-srv
+lecture-srv/node_modules
+
+#purchase-srv
+purchase-srv/node_modules
+
