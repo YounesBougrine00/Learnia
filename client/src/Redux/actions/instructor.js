@@ -4,7 +4,7 @@ import { GET_INSTRUCTORS, ADD_INSTRUCTOR } from '../types'
 //Get instructors
 export const getInstructors = () =>async dispatch => {
     try {
-        const res = await axios.get('http://localhost:5000/api/instructors')
+        const res = await axios.get('http://localhost:5002/api/instructor')
         dispatch ({
             type: GET_INSTRUCTORS,
             payload: res.data
@@ -24,7 +24,7 @@ export const addInstructor = (instructor) => async dispatch => {
                 'Content-Type': 'application/json'
             }
         }
-        const res = await axios.post('http://localhost:5000/api/instructors',instructor,config)
+        const res = await axios.post('http://localhost:5002/api/instructor',instructor,config)
         dispatch({
             type: ADD_INSTRUCTOR,
             payload: res.data

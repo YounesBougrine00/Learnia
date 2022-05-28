@@ -42,7 +42,7 @@ const FileUpload = ({courseId}) => {
 
     
         try {
-            const res = await axios.post('/api/lectures', formData, {
+            const res = await axios.post('http://localhost:5004/api/lecture', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             },
@@ -71,7 +71,7 @@ const FileUpload = ({courseId}) => {
 
         } catch (err) {
           setIsDisabled(false)
-          if(err.response.status == 500){
+          if(err.response.status === 500){
               setMessage({text:'There was a problem with the server'})
               
           }else{

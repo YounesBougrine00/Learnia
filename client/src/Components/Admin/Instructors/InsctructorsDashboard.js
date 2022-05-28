@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import AdminNav from '../AdminNav'
 import './Instructors.css'
 import InstructorCard from './InstructorCard'
-import Angular from '../../../images/Angular.jpg'
 import { useSelector,useDispatch } from 'react-redux'
 import { addInstructor, getInstructors } from '../../../Redux/actions/instructor'
 

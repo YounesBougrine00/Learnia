@@ -1,28 +1,12 @@
-import React, { useEffect,useState } from 'react'
+import React from 'react'
 import '../../App.css'
 import './InstructorTop.css'
-import axios  from 'axios'
-import {  useParams } from "react-router";
 
-const InstructorTop = () => {
+const InstructorTop = ({instructor}) => {
   
-  const {instructorId} = useParams()
-
-  const [instructor,setInstructor] = useState('')
-
-  useEffect(()=>{
-    async function getResults() {
-      if(instructorId){
-
-     const res = await axios.get(`http://localhost:5000/api/instructors/${instructorId}`)
-
-     setInstructor(res.data)
-   }
-   }
-
-   getResults()
   
-  },[instructorId])
+
+
 
   return (
     <div className="instructor-banner">

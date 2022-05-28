@@ -8,7 +8,7 @@ import Modal from '../utils/Modal'
 import PaymentForm from '../utils/PaymentForm'
 
 
-const CourseTop = ({course,loading,instructor}) => {
+const CourseTop = ({course,loading}) => {
 
  const navigate = useNavigate()
  const {user} = useSelector(state => state.auth)
@@ -31,7 +31,7 @@ const CourseTop = ({course,loading,instructor}) => {
                 [ 300 enrolled ]
             </p>
             <p className="creator">
-                <i className="fas fa-info-circle"></i> Created by : <span onClick={()=>navigate(`/instructor/${instructor._id}`)}>{instructor.name}</span>
+                <i className="fas fa-info-circle"></i> Created by : <span onClick={()=>navigate(`/instructor/${course.instructor[0].instructorId}`)}>{course.instructor[0].name}</span>
             </p>
             <p className="creator">
                 <i className="fa-solid fa-globe"></i> {(!loading && course) && course.language}

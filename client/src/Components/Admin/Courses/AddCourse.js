@@ -34,7 +34,7 @@ const AddCourse = () => {
     // Inputs
     const [title,setTitle] = useState("")
     const [subtitle,setSubtitle] = useState("")
-    const [instructor,setInstructor] = useState("")
+    const [instructor,setInstructor] = useState({})
     const [category,setCategory] = useState("")
     const [language,setLanguage] = useState("")
     const [description,setDescription] = useState("")
@@ -101,7 +101,7 @@ const AddCourse = () => {
     const handleSubmit = e =>{
         e.preventDefault()
         setShowLoader(true)
-        dispatch(addCourse({title,subtitle,instructor,category,language,description,whatYouWillLearn,prerequisites,previewSource,level}))
+        dispatch(addCourse({title,subtitle,instructor:JSON.parse(instructor),category,language,description,whatYouWillLearn,prerequisites,previewSource,level}))
         
     
         
@@ -141,7 +141,7 @@ const AddCourse = () => {
             <p>Instructor</p>
             <select id="pet-select" value={instructor} onChange={e=>setInstructor(e.target.value)}>
                 <option value="">Choose an instructor</option>
-                {(!loading && instructors) && instructors.map(instructor =><option key={instructor._id} value={instructor._id}>{instructor.name}</option> )}
+                {(!loading && instructors) && instructors.map(instructor =><option key={instructor._id} value={JSON.stringify({instructorId:instructor._id,name:instructor.name})}>{instructor.name}</option> )}
                 
             </select>
             </div>

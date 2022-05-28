@@ -1,18 +1,23 @@
 import React from 'react'
 import '../../App.css'
-import './InstructorBottom.css'
 import CourseItem from '../Courses/CourseItem'
-import Angular from '../../images/Angular.jpg'
-import Firebase from '../../images/Firebase.jpg'
-import datascience from '../../images/datascience.jpg'
+import './InstructorBottom.css'
 
 
-const InstructorBottom = () => {
+
+const InstructorBottom = ({courses}) => {
+ 
+
+ console.log(courses)
+
   return (
     <div className="container" style={{"marginBottom":"2rem"}}>
-      <div className="p-title">Courses made by Instructor name</div>
+      <div className="p-title">Courses made by the instructor</div>
+      <hr/>
       <div className="courses">
-         
+        {courses && courses.map(course => <CourseItem course={course}/>)
+        
+        }
       </div>
     </div>
   )
