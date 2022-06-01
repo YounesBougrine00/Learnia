@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import '../../App.css'
 import './CourseTop.css'
 import {BsBarChartFill} from 'react-icons/bs'
@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import Modal from '../utils/Modal'
 import PaymentForm from '../utils/PaymentForm'
+import axios from 'axios'
 
 
 const CourseTop = ({course,loading}) => {
@@ -14,6 +15,19 @@ const CourseTop = ({course,loading}) => {
  const {user} = useSelector(state => state.auth)
 
  const [openModal,setOpenModal] = useState(false)
+ const [isPurchased,setIsPurchased] = useState()
+
+ useEffect(()=>{
+     const checkPurchase = async ()=> {
+         const res = await axios.get(`http://localhost:5005/api/purchase/${user.id}/${course._id}`)
+        setIsPurchased(res.data.length>0) 
+     }
+
+     checkPurchase()
+   
+ },[])
+ 
+
 
   return (
     <>
@@ -49,19 +63,18 @@ const CourseTop = ({course,loading}) => {
         </div>
         
         </div>  
-        
     </div>
     <div className="price-wrapper">
     <div className="container">
         <div className="price">
-            {user && <button onClick={()=> setOpenModal(true)} className="btn btn-secondary" style={{"margin":"0 2rem 0 0 ","paddingRight":"2rem","paddingLeft":"2rem"}}><strong>Buy now</strong></button>}
+            {user && (!isPurchased?<button onClick={()=> setOpenModal(true)} className="btn btn-secondary" style={{"margin":"0 2rem 0 0 ","paddingRight":"2rem","paddingLeft":"2rem"}}><strong>Buy now</strong></button>:<button onClick={()=> navigate(`/lecture/${course._id}`)} className="btn btn-secondary" style={{"margin":"0 2rem 0 0 ","paddingRight":"2rem","paddingLeft":"2rem"}}><strong>Go to lecture</strong></button>)}
              
-              <p style={{"margin":"0"}}>6.99{' '}$US</p>
+             { !isPurchased && <p style={{"margin":"0"}}>6.99{' '}$US</p>}
         </div>
     </div>
     </div>
    
-    {openModal && <Modal isOpen={setOpenModal}><PaymentForm course={course.title}/></Modal>}
+    {openModal && <Modal isOpen={setOpenModal}><PaymentForm course={course.title} setIsPurchased={setIsPurchased} setOpenModal={setOpenModal} courseId={course._id} userId={user.id}/></Modal>}
     </>
   )
 }

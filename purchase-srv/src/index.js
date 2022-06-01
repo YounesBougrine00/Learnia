@@ -24,9 +24,9 @@ connectQueues(["purchase:user.created","purchase:course.purchased"]).then(() => 
       channel.ack(data);
   });
   channel.consume("purchase:course.purchased", (data) => {
-    const {userId, courseId, title, purchaseDate}= JSON.parse(data.content);
+    const {userId, courseId, title, thumbnail, purchaseDate}= JSON.parse(data.content);
     
-    addCourse({userId, courseId, title, purchaseDate})
+    addCourse({userId, courseId, title, thumbnail, purchaseDate})
     
     channel.ack(data);
 });

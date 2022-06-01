@@ -9,11 +9,30 @@ router.get("/:userId", async (req,res)=>{
    
    const userId = req.params.userId
 
-   const purchasedCourses = Purchase.find({userId})
+   const purchasedCourses = await Purchase.findOne({userId})
+ 
 
-   res.send(purchasedCourses)
+  res.send(purchasedCourses.courses)
 })
 
+// Check if course is purchased by user
+
+router.get("/:userId/:courseId", async (req,res)=>{
+   
+   const userId = req.params.userId
+   const courseId = req.params.courseId
+
+
+   const purchasedCourses = await Purchase.findOne({userId})
+
+
+   const course = purchasedCourses.courses.filter(course => course.courseId === courseId)
+
+   
+ 
+
+  res.send(course)
+})
 
 
 

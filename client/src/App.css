@@ -267,6 +267,10 @@ nav{
   color: var(--dark-color);
   background-color:#ECEB98;
   padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid #caca49;
+  color:#482e0e;
+
 }
 
 .form{

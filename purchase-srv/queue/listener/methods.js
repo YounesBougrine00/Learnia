@@ -7,12 +7,12 @@ async function addUser({userId }){
    
   }
 
-  async function addCourse({userId, courseId, title, purchaseDate}){
+  async function addCourse({userId,thumbnail, courseId, title, purchaseDate}){
     const purchase = await Purchase.findOne({userId})
 
 
     if(purchase){
-     purchase.courses.push({courseId,title,purchaseDate})
+     purchase.courses.push({courseId,title,purchaseDate,thumbnail})
      await purchase.save()
 
     }

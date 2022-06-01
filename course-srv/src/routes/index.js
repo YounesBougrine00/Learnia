@@ -73,8 +73,9 @@ router.post('/buy/:courseId/:userId', async (req,res)=>{
     const course = await Course.findById(courseId)
 
     const title = course.title
+    const thumbnail= course.thumbnail
     const purchaseDate = new Date()
-    sendtoQueue("purchase:course.purchased",{userId, courseId, title, purchaseDate})
+    sendtoQueue("purchase:course.purchased",{userId, courseId, title, thumbnail, purchaseDate})
     res.send({userId, courseId, title, purchaseDate})
 })
 
