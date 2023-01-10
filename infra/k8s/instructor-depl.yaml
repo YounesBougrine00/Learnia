@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: instructor-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: instructor
+  template:
+    metadata:
+      labels:
+        app: instructor
+    spec:
+      containers:
+        - name: instructor
+          image: mylearniaacr.azurecr.io/learnia/instructor
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://instructor-mongo-srv:27017/learnia-instructor-db'
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef: 
+                  name: jwt-secret
+                  key: JWT_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: instructor-srv
+spec:
+  selector:
+    app: instructor
+  ports:
+    - name: instructor
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

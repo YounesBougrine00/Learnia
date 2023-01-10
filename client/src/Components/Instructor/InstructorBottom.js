@@ -15,7 +15,7 @@ const InstructorBottom = ({courses}) => {
       <div className="p-title">Courses made by the instructor</div>
       <hr/>
       <div className="courses">
-        {courses && courses.map(course => <CourseItem course={course}/>)
+        {courses && courses?.map(course => <CourseItem course={course}/>)
         
         }
       </div>

@@ -2,17 +2,17 @@ import axios from 'axios'
 import { GET_LECTURES, ADD_LECTURE, DELETE_LECTURES } from '../types'
 
 //Get Lectures
-export const getLectures = (courseId) =>async dispatch => {
+export const getLectures = (courseId) => async dispatch => {
     try {
-        
-        const res = await axios.get(`http://localhost:5004/api/lecture/${courseId}`)
-        dispatch ({
+
+        const res = await axios.get(`https://learnia.dev/api/lecture/${courseId}`)
+        dispatch({
             type: GET_LECTURES,
             payload: res.data
         })
-        
+
     } catch (err) {
-       console.log(err)
+        console.log(err)
     }
 }
 
@@ -20,10 +20,10 @@ export const getLectures = (courseId) =>async dispatch => {
 
 export const addLecture = (lecture) => async dispatch => {
     try {
-       dispatch({
-           type: ADD_LECTURE,
-           payload: lecture
-       })
+        dispatch({
+            type: ADD_LECTURE,
+            payload: lecture
+        })
     } catch (error) {
         console.log(error)
     }

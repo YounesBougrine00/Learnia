@@ -17,7 +17,7 @@ const PaymentForm = ({course,courseId,userId,setOpenModal,setIsPurchased}) => {
           'Content-Type': 'application/json'
       }
   }
-    await axios.post(`http://localhost:5003/api/course/buy/${courseId}/${userId}`,config)
+    await axios.post(`https://learnia.dev/api/course/buy/${courseId}/${userId}`,config)
     setIsPurchased(true)
     setOpenModal(false)
   }

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: instructor-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: instructor-mongo
+  template:
+    metadata:
+      labels:
+        app: instructor-mongo
+    spec:
+      containers:
+        - name: instructor-mongo
+          image: mongo 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: instructor-mongo-srv
+spec:
+  selector:
+    app: instructor-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

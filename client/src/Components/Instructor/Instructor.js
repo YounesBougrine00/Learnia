@@ -15,7 +15,7 @@ const Instructor = () => {
     async function getResults() {
       if(instructorId){
 
-     const res = await axios.get(`http://localhost:5002/api/instructor/${instructorId}`)
+     const res = await axios.get(`https://learnia.dev/api/instructor/${instructorId}`)
 
      setInstructor(res.data)
    }

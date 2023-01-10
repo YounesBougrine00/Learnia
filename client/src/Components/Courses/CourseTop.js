@@ -19,7 +19,7 @@ const CourseTop = ({course,loading}) => {
 
  useEffect(()=>{
      const checkPurchase = async ()=> {
-         const res = await axios.get(`http://localhost:5005/api/purchase/${user.id}/${course._id}`)
+         const res = await axios.get(`https://learnia.dev/api/purchase/${user.id}/${course._id}`)
         setIsPurchased(res.data.length>0) 
      }
 

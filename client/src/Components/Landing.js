@@ -55,7 +55,7 @@ const Landing = () => {
     <div className="container" style={{"marginBottom":"2rem"}}>
       <p className='text-title'>Explore courses</p>
       <div className="courses">
-        {(!landing_courses_loading && landing_courses) && landing_courses.map(course=> <CourseItem key={course._id} course={course}/> )}
+        {(!landing_courses_loading && landing_courses) && landing_courses?.map(course=> <CourseItem key={course._id} course={course}/> )}
 
       </div>
     </div>

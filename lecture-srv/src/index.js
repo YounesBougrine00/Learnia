@@ -7,7 +7,7 @@ const fileUpload = require('express-fileupload');
 
 
 const app = express();
-app.use(json());
+app.use(express.json({ limit: '500mb', extended: true }));
 app.use(cors())
 app.use(fileUpload())
 
@@ -30,7 +30,6 @@ connectToDb()
 app.use('/api/lecture', require('./routes/index'))
 
 
-app.listen(5004, () => {
-  console.log("Listening on port 5004!");
+app.listen(3000, () => {
+    console.log("Listening on port 5004!");
 });
- 

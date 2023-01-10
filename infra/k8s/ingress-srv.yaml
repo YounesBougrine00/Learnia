@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
+spec:
+  rules:
+    - host: learnia.dev
+      http:
+        paths:
+          - path: /api/auth/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: auth-srv
+                port:
+                  number: 3000
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: client-srv
+                port:
+                  number: 3000
+          - path: /api/course/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: course-srv
+                port:
+                  number: 3000
+          - path: /api/instructor/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: instructor-srv
+                port:
+                  number: 3000
+          - path: /api/lecture/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: lecture-srv
+                port:
+                  number: 3000
+          - path: /api/purchase/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: purchase-srv
+                port:
+                  number: 3000

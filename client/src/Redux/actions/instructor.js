@@ -2,16 +2,16 @@ import axios from 'axios'
 import { GET_INSTRUCTORS, ADD_INSTRUCTOR } from '../types'
 
 //Get instructors
-export const getInstructors = () =>async dispatch => {
+export const getInstructors = () => async dispatch => {
     try {
-        const res = await axios.get('http://localhost:5002/api/instructor')
-        dispatch ({
+        const res = await axios.get('https://learnia.dev/api/instructor')
+        dispatch({
             type: GET_INSTRUCTORS,
             payload: res.data
         })
-        
+
     } catch (err) {
-       console.log(err)
+        console.log(err)
     }
 }
 
@@ -20,11 +20,11 @@ export const getInstructors = () =>async dispatch => {
 export const addInstructor = (instructor) => async dispatch => {
     try {
         const config = {
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
             }
         }
-        const res = await axios.post('http://localhost:5002/api/instructor',instructor,config)
+        const res = await axios.post('https://learnia.dev/api/instructor', instructor, config)
         dispatch({
             type: ADD_INSTRUCTOR,
             payload: res.data

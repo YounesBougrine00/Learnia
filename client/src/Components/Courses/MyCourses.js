@@ -12,7 +12,7 @@ const MyCourses = () => {
 
   useEffect(()=>{
     const fetchCourses = async ()=> {
-      const res = await axios.get(`http://localhost:5005/api/purchase/${userId}`)
+      const res = await axios.get(`https://learnia.dev/api/purchase/${userId}`)
       setCourses(res.data)
     }
 

@@ -42,7 +42,7 @@ const FileUpload = ({courseId}) => {
 
     
         try {
-            const res = await axios.post('http://localhost:5004/api/lecture', formData, {
+            const res = await axios.post('https://learnia.dev/api/lecture', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             },

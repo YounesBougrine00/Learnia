@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lecture-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lecture
+  template:
+    metadata:
+      labels:
+        app: lecture
+    spec:
+      containers:
+        - name: lecture
+          image: mylearniaacr.azurecr.io/learnia/lecture
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://lecture-mongo-srv:27017/learnia-lecture-db'
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef: 
+                  name: jwt-secret
+                  key: JWT_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lecture-srv
+spec:
+  selector:
+    app: lecture
+  ports:
+    - name: lecture
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

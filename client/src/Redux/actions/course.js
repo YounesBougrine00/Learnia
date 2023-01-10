@@ -5,14 +5,14 @@ import { COURSE_ADDED_SUCCESSFULLY } from '../types'
 
 //Add course
 
-export const addCourse = (course)=> async dispatch  => {
+export const addCourse = (course) => async dispatch => {
     try {
         const config = {
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
             }
         }
-        await axios.post('http://localhost:5003/api/course',course,config)
+        await axios.post('https://learnia.dev/api/course', course, config)
         dispatch(courseAddedState(true))
 
     } catch (error) {
@@ -27,7 +27,7 @@ export const getCourses = () => async dispatch => {
 
     try {
 
-        const res = await axios.get('http://localhost:5003/api/course')
+        const res = await axios.get('https://learnia.dev/api/course')
         dispatch({
             type: GET_COURSES,
             payload: res.data
@@ -42,7 +42,7 @@ export const getCourses = () => async dispatch => {
 export const getLandingCourses = () => async dispatch => {
     try {
 
-        const res = await axios.get('http://localhost:5003/api/course/landing')
+        const res = await axios.get('https://learnia.dev/api/course/landing')
         dispatch({
             type: GET_LANDING_COURSES,
             payload: res.data
@@ -60,10 +60,10 @@ export const getCourse = (courseId) => async dispatch => {
         type: CLEAR_COURSE
     })
     try {
-        const res = await axios.get(`http://localhost:5003/api/course/${courseId}`)
+        const res = await axios.get(`https://learnia.dev/api/course/${courseId}`)
         dispatch({
             type: GET_COURSE,
-            payload:res.data
+            payload: res.data
         })
     } catch (err) {
         console.log(err)
@@ -78,7 +78,7 @@ export const courseAddedState = (state) => dispatch => {
             type: COURSE_ADDED_SUCCESSFULLY,
             payload: state
         })
-        
+
     } catch (error) {
         console.log(error)
     }

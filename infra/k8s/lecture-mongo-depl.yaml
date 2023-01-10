@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lecture-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lecture-mongo
+  template:
+    metadata:
+      labels:
+        app: lecture-mongo
+    spec:
+      containers:
+        - name: lecture-mongo
+          image: mongo 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lecture-mongo-srv
+spec:
+  selector:
+    app: lecture-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
